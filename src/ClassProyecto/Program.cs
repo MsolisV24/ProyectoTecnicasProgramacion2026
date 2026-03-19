@@ -1,4 +1,8 @@
-namespace Proyecto
+using ClassController;
+using ClassController.Abstractions;
+using ClassModels;
+
+namespace ClassProyecto
 {
     internal static class Program
     {
@@ -11,7 +15,26 @@ namespace Proyecto
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+            var userController = LoadControllerService();
+            Application.Run(new LoginView(userController));
         }
+
+        /// <summary>
+        /// Loads the controller service.
+        /// </summary>
+        /// <returns></returns>
+        private static LoginController LoadControllerService()
+        {
+            var userHandler = new UserHandler(new FileHandler<Customer>());
+            var couldLoadUsers = userHandler.LoadUsers(Generals.FileNameUsers);
+            if (!couldLoadUsers)
+            {
+                MessageBox.Show("Could not load users from data source. The application will close.");
+                Environment.Exit(1);
+            }
+            var userController = new LoginController(userHandler);
+            return userController;
+        }
+
     }
 }
