@@ -166,7 +166,7 @@
             lblTotal.Name = "lblTotal";
             lblTotal.Size = new Size(100, 23);
             lblTotal.TabIndex = 0;
-            lblTotal.Text = "0.00";
+            lblTotal.Text = "0";
             // 
             // btnGenerateSummary
             // 
@@ -184,7 +184,7 @@
             btnCalcularIMC.Name = "btnCalcularIMC";
             btnCalcularIMC.Size = new Size(120, 30);
             btnCalcularIMC.TabIndex = 15;
-            btnCalcularIMC.Text = "Calcular IMC";
+            btnCalcularIMC.Text = "Calculate IMC";
             btnCalcularIMC.UseVisualStyleBackColor = true;
             btnCalcularIMC.Click += btnCalcularIMC_Click;
             // 

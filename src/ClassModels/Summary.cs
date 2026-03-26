@@ -20,13 +20,6 @@
         /// </value>
         public decimal Subtotal { get; set; }
         /// <summary>
-        /// Gets or sets the tax.
-        /// </summary>
-        /// <value>
-        /// The tax.
-        /// </value>
-        public decimal Tax { get; set; }
-        /// <summary>
         /// Gets or sets the total.
         /// </summary>
         /// <value>
@@ -51,9 +44,7 @@
         {
             return $"Diet: {Diet}\n" +
                    $"Date: {Date}\n" +
-                   $"Subtotal: {Subtotal:C}\n" +
-                   $"Tax: {Tax:C}\n" +
-                   $"Total: {Total:C}\n";
+                   $"Total: {Total:N0}\n";
         }
     }
 }

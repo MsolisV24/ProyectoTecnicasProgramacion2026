@@ -31,7 +31,7 @@ namespace ClassController
                 return false;
             }
 
-            foreach (var costumer in UserHandler.Custumers)
+            foreach (var costumer in UserHandler.Customers)
             {
                 if (costumer.Username == userName && costumer.Password == password)
                 {

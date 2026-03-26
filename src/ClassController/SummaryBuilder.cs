@@ -32,23 +32,12 @@ namespace ClassController
         }
 
         /// <summary>
-        /// Sets the tax.
-        /// </summary>
-        /// <param name="tax">The tax.</param>
-        /// <returns></returns>
-        public SummaryBuilder SetTax(decimal tax)
-        {
-            summary.Tax = tax;
-            return this;
-        }
-
-        /// <summary>
         /// Sets the total.
         /// </summary>
         /// <returns></returns>
         public SummaryBuilder SetTotal()
         {
-            summary.Total = summary.Subtotal + summary.Tax;
+            summary.Total = summary.Subtotal;
             return this;
         }
 

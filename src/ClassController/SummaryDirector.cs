@@ -18,12 +18,11 @@ namespace ClassController
                                      string diet,
                                      decimal subtotal)
         {
-            decimal tax = subtotal * 0.13m;
+            
 
             return builder
                 .SetDiet(diet)
                 .SetSubtotal(subtotal)
-                .SetTax(tax)
                 .SetTotal()
                 .SetDate(DateTime.Now)
                 .Build();

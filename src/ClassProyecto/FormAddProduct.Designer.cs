@@ -59,7 +59,7 @@
             lblPrice.Name = "lblPrice";
             lblPrice.Size = new Size(100, 23);
             lblPrice.TabIndex = 6;
-            lblPrice.Text = "0.00";
+            lblPrice.Text = "0";
 
             btnAccept.Location = new Point(25, 180);
             btnAccept.Name = "btnAccept";
@@ -97,7 +97,7 @@
             lblPriceText.Name = "lblPriceText";
             lblPriceText.Size = new Size(100, 23);
             lblPriceText.TabIndex = 0;
-            lblPriceText.Text = "Price:";
+            lblPriceText.Text = "Kcal:";
 
             ClientSize = new Size(275, 250);
             Controls.Add(lblPriceText);

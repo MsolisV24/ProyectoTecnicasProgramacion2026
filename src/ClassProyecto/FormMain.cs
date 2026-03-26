@@ -44,7 +44,7 @@ namespace ClassProyecto
         }
         private void btnCalcularIMC_Click(object sender, EventArgs e)
         {
-            new Form1().ShowDialog();
+            new FormIMC().ShowDialog();
         }
         /// <summary>
         /// Handles the Click event of the btnLoadData control.
@@ -229,6 +229,12 @@ namespace ClassProyecto
             dgvCart.DataSource = null;
             dgvCart.DataSource = _cart.GetCurrentCart().Items.ToList();
             lblTotal.Text = _cart.GetCurrentCart().Total.ToString("N2");
+
+            dgvCart.Columns["ProductId"].HeaderText = "ProductID";
+            dgvCart.Columns["ProductName"].HeaderText = "Product";
+            dgvCart.Columns["UnitPrice"].HeaderText = "Kcal";
+            dgvCart.Columns["Quantity"].HeaderText = "Quantity";
+            dgvCart.Columns["SubTotal"].HeaderText = "Total";
         }
 
         /// <summary>
