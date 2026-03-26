@@ -116,7 +116,7 @@
             lblTitle.Name = "lblTitle";
             lblTitle.Size = new Size(800, 70);
             lblTitle.TabIndex = 0;
-            lblTitle.Text = "Welcome to Sistema Feria del Agricultor CR";
+            lblTitle.Text = "Welcome to Sistema de Gestion";
             lblTitle.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // LoginView

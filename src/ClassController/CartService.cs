@@ -26,7 +26,10 @@ namespace ClassController
             _inventory = inventory;
             _history = history;
         }
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CartService"/> class.
+        /// </summary>
+        /// <param name="products">The products.</param>
         public CartService(List<Product> products)
         {
             this.products = products;
