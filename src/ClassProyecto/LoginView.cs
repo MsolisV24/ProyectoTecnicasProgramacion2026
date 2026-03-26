@@ -61,7 +61,9 @@ namespace ClassProyecto
                 txt_Password.Clear();
                 return;
             }
-            
+            var carrito = new FormMain(userName);
+            carrito.Show();
+            this.Hide();
         }
 
         private void LoginView_Load(object sender, EventArgs e)
