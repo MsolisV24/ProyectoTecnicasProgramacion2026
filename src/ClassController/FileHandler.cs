@@ -1,4 +1,6 @@
-﻿namespace ClassController
+﻿using ClassModels;
+
+namespace ClassController
 {
     using System.Collections.Generic;
     using ClassController.Abstractions;

@@ -36,6 +36,10 @@ namespace ClassProyecto
             dgvProducts.DataSource = _stats.GetTopProducts(from, to);
             dgvMonths.DataSource = _stats.GetMonthlySummary();
 
+
+            dgvMonths.Columns["TotalAmount"].HeaderText = "Total Kcal";
+            dgvPeoples.Columns["TotalAmount"].HeaderText = "Total Kcal";
+
             var bestMonth = _stats.GetMonthWithMoreConsumption();
             lblBestMonth.Text = bestMonth == null
                 ? "No data"
