@@ -116,7 +116,7 @@
             MaximizeBox = false;
             Name = "RegisterView";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Register - Sistema Feria del Agricultor CR";
+            Text = "Register - Sistema de Gestión";
             Load += RegisterView_Load;
             ResumeLayout(false);
             PerformLayout();
