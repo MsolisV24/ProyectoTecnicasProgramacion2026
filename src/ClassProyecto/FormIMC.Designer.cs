@@ -156,6 +156,7 @@ namespace ClassProyecto
             Controls.Add(btnCalculate);
             Controls.Add(lblResult);
             Name = "FormIMC";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Calculator IMC";
             Load += FormIMC_Load_1;
             ResumeLayout(false);

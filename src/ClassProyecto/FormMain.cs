@@ -18,22 +18,20 @@ namespace ClassProyecto
         private ICartService _cart;
         private IStatisticsService _stats;
         private bool _dataLoaded = false;
+        private bool _isAdmin;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FormMain"/> class.
         /// </summary>
         /// <param name="username">The username.</param>
-        public FormMain(string username)
+        public FormMain(string username, bool isAdmin)
         {
             InitializeComponent();
             _username = username;
-        }
+            _isAdmin = isAdmin;
+            btnAdmin.Visible = isAdmin;
 
-        /// <summary>
-        /// Handles the Load event of the FormMain control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        }
         private void FormMain_Load(object sender, EventArgs e)
         {
             cmbUsers.DataSource = null;
@@ -46,11 +44,6 @@ namespace ClassProyecto
         {
             new FormIMC().ShowDialog();
         }
-        /// <summary>
-        /// Handles the Click event of the btnLoadData control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void btnLoadData_Click(object sender, EventArgs e)
         {
             try
@@ -86,12 +79,37 @@ namespace ClassProyecto
                 MessageBox.Show("Error loading data: " + ex.Message);
             }
         }
+        private void btnAdmin_Click(object sender, EventArgs e)
+        {
+            if (!_dataLoaded)
+            {
+                MessageBox.Show("Load data first");
+                return;
+            }
 
-        /// <summary>
-        /// Handles the Click event of the btnSetUserDiet control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+            var basePath = AppDomain.CurrentDomain.BaseDirectory;
+
+            var adminService = new AdminService(
+                _market.Username,
+                _market.Products,
+                _market.Inventory,
+                Path.Combine(basePath, "users.csv"),
+                Path.Combine(basePath, "products.csv"),
+                Path.Combine(basePath, "inventory.csv")
+            );
+
+            var adminPanel = new FormAdminPanel(adminService);
+            adminPanel.ShowDialog();
+
+            _market.LoadCsvFiles(
+                Path.Combine(basePath, "users.csv"),
+                Path.Combine(basePath, "people.csv"),
+                Path.Combine(basePath, "diet.csv"),
+                Path.Combine(basePath, "products.csv"),
+                Path.Combine(basePath, "inventory.csv"),
+                Path.Combine(basePath, "dates.csv")
+            );
+        }
         private void btnSetUserDiet_Click(object sender, EventArgs e)
         {
             if (!_dataLoaded)
@@ -110,12 +128,6 @@ namespace ClassProyecto
             _cart.SetCurrentUserAndDiet(_username, dietId);
             RefreshCart();
         }
-
-        /// <summary>
-        /// Handles the Click event of the btnAddProduct control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
             if (!_dataLoaded)
@@ -140,12 +152,6 @@ namespace ClassProyecto
                 }
             }
         }
-
-        /// <summary>
-        /// Handles the Click event of the btnRemoveItem control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void btnRemoveItem_Click(object sender, EventArgs e)
         {
             if (!_dataLoaded)
@@ -162,12 +168,6 @@ namespace ClassProyecto
                 RefreshCart();
             }
         }
-
-        /// <summary>
-        /// Handles the Click event of the btnClearCart control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void btnClearCart_Click(object sender, EventArgs e)
         {
             if (!_dataLoaded)
@@ -179,12 +179,6 @@ namespace ClassProyecto
             _cart.ClearCart();
             RefreshCart();
         }
-
-        /// <summary>
-        /// Handles the Click event of the btnCheckout control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void btnCheckout_Click(object sender, EventArgs e)
         {
             if (!_dataLoaded)
@@ -204,12 +198,6 @@ namespace ClassProyecto
                 MessageBox.Show("Error processing purchase: " + ex.Message);
             }
         }
-
-        /// <summary>
-        /// Handles the Click event of the btnViewStats control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void btnViewStats_Click(object sender, EventArgs e)
         {
             if (!_dataLoaded)
@@ -221,9 +209,6 @@ namespace ClassProyecto
             new FormStatistics(_stats).ShowDialog();
         }
 
-        /// <summary>
-        /// Refreshes the cart.
-        /// </summary>
         private void RefreshCart()
         {
             dgvCart.DataSource = null;
@@ -237,11 +222,6 @@ namespace ClassProyecto
             dgvCart.Columns["SubTotal"].HeaderText = "Total";
         }
 
-        /// <summary>
-        /// Handles the Click event of the btnGenerateSummary control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void btnGenerateSummary_Click(object sender, EventArgs e)
         {
             Cart cart = _cart.GetCurrentCart();
@@ -271,4 +251,5 @@ namespace ClassProyecto
             MessageBox.Show(summary.ToString(), "Summary");
         }
     }
+
 }

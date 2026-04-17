@@ -1,20 +1,9 @@
 ﻿namespace ClassProyecto
 {
-    /// <summary>
-    /// implements the login view.
-    /// </summary>
-    /// <seealso cref="System.Windows.Forms.Form" />
     partial class LoginView
     {
-        /// <summary>
-        /// The components
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Disposes of the resources (other than memory) used by the <see cref="T:System.Windows.Forms.Form" />.
-        /// </summary>
-        /// <param name="disposing"><see langword="true" /> to release both managed and unmanaged resources; <see langword="false" /> to release only unmanaged resources.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -26,9 +15,6 @@
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Initializes the component.
-        /// </summary>
         private void InitializeComponent()
         {
             btn_Login = new Button();
@@ -39,6 +25,7 @@
             txt_Password = new TextBox();
             topPanel = new Panel();
             lblTitle = new Label();
+            btnAdmin = new Button();
             topPanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -119,11 +106,23 @@
             lblTitle.Text = "Welcome to Sistema de Gestion";
             lblTitle.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // btnAdmin
+            // 
+            btnAdmin.Location = new Point(320, 330);
+            btnAdmin.Name = "btnAdmin";
+            btnAdmin.Size = new Size(160, 40);
+            btnAdmin.TabIndex = 7;
+            btnAdmin.Text = "Admin Login";
+            btnAdmin.UseVisualStyleBackColor = true;
+            btnAdmin.Visible = false;
+            btnAdmin.Click += btnAdmin_Click;
+            // 
             // LoginView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 467);
+            Controls.Add(btnAdmin);
             Controls.Add(topPanel);
             Controls.Add(txt_Password);
             Controls.Add(txt_UserName);
@@ -152,5 +151,6 @@
         private TextBox txt_Password;
         private Panel topPanel;
         private Label lblTitle;
+        private Button btnAdmin;
     }
 }

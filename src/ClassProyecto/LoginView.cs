@@ -53,7 +53,7 @@ namespace ClassProyecto
             if (!ValidateArgs(userName, password))
                 return;
 
-            var loginSuccess = Login(userName, password);
+            var loginSuccess = loginController.Login(userName, password);
 
             if (!loginSuccess)
             {
@@ -61,8 +61,10 @@ namespace ClassProyecto
                 txt_Password.Clear();
                 return;
             }
-            var carrito = new FormMain(userName);
-            carrito.Show();
+
+            var isAdmin = loginController.IsAdmin;
+            var mainForm = new FormMain(userName, isAdmin);
+            mainForm.Show();
             this.Hide();
         }
 
@@ -75,6 +77,13 @@ namespace ClassProyecto
         {
             var view = new RegisterView(loginController.UserHandler);
             view.ShowDialog();
+        }
+
+        private void btnAdmin_Click(object sender, EventArgs e)
+        {
+            txt_UserName.Text = "admin";
+            txt_Password.Text = "admin";
+            btn_Login_Click(sender, e);
         }
     }
 }

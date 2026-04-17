@@ -14,6 +14,7 @@
         private System.Windows.Forms.Label lblFromText;
         private System.Windows.Forms.Label lblToText;
         private System.Windows.Forms.Label lblBestMonthText;
+        private System.Windows.Forms.Button btnExportStats;
 
         protected override void Dispose(bool disposing)
         {
@@ -34,10 +35,21 @@
             lblFromText = new Label();
             lblToText = new Label();
             lblBestMonthText = new Label();
+            btnExportStats = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvPeoples).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvProducts).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvMonths).BeginInit();
             SuspendLayout();
+            // 
+            // btnExportStats
+            // 
+            btnExportStats.Location = new Point(600, 430);
+            btnExportStats.Name = "btnExportStats";
+            btnExportStats.Size = new Size(140, 30);
+            btnExportStats.TabIndex = 10;
+            btnExportStats.Text = "Export Stats";
+            btnExportStats.UseVisualStyleBackColor = true;
+            btnExportStats.Click += btnExportStats_Click;
             // 
             // dgvPeoples
             // 
@@ -88,7 +100,7 @@
             // 
             // lblBestMonth
             // 
-            lblBestMonth.Location = new Point(160, 430);
+            lblBestMonth.Location = new Point(160, 435);
             lblBestMonth.Name = "lblBestMonth";
             lblBestMonth.Size = new Size(150, 23);
             lblBestMonth.TabIndex = 1;
@@ -112,7 +124,7 @@
             // 
             // lblBestMonthText
             // 
-            lblBestMonthText.Location = new Point(12, 430);
+            lblBestMonthText.Location = new Point(12, 435);
             lblBestMonthText.Name = "lblBestMonthText";
             lblBestMonthText.Size = new Size(150, 23);
             lblBestMonthText.TabIndex = 0;
@@ -120,7 +132,8 @@
             // 
             // FormStatistics
             // 
-            ClientSize = new Size(780, 470);
+            ClientSize = new Size(780, 480);
+            Controls.Add(btnExportStats);
             Controls.Add(lblBestMonthText);
             Controls.Add(lblBestMonth);
             Controls.Add(btnApplyFilter);
@@ -132,6 +145,7 @@
             Controls.Add(dgvProducts);
             Controls.Add(dgvPeoples);
             Name = "FormStatistics";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Statistics";
             Load += FormStatistics_Load;
             ((System.ComponentModel.ISupportInitialize)dgvPeoples).EndInit();
