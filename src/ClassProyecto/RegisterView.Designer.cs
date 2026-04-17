@@ -115,7 +115,7 @@
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             Name = "RegisterView";
-            StartPosition = FormStartPosition.CenterScreen;
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Register - Sistema de Gestión";
             Load += RegisterView_Load;
             ResumeLayout(false);

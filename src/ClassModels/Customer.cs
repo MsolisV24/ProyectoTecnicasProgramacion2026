@@ -69,6 +69,7 @@
         /// The directions.
         /// </value>
         public string Directions { get; set; } = "[]";
+        public int Id { get; set; }
 
         /// <summary>
         /// Converts to string.

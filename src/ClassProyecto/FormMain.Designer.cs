@@ -19,6 +19,7 @@
         private System.Windows.Forms.Label lblTotalText;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Button btnCalcularIMC;
+        private System.Windows.Forms.Button btnAdmin;
 
         protected override void Dispose(bool disposing)
         {
@@ -45,6 +46,7 @@
             lblTotal = new Label();
             btnGenerateSummary = new Button();
             btnCalcularIMC = new Button();
+            btnAdmin = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvCart).BeginInit();
             SuspendLayout();
             // 
@@ -188,6 +190,17 @@
             btnCalcularIMC.UseVisualStyleBackColor = true;
             btnCalcularIMC.Click += btnCalcularIMC_Click;
             // 
+            // btnAdmin
+            // 
+            btnAdmin.Location = new Point(160, 395);
+            btnAdmin.Name = "btnAdmin";
+            btnAdmin.Size = new Size(120, 30);
+            btnAdmin.TabIndex = 99;
+            btnAdmin.Text = "Admin Panel";
+            btnAdmin.UseVisualStyleBackColor = true;
+            btnAdmin.Visible = false;
+            btnAdmin.Click += btnAdmin_Click;
+            // 
             // FormMain
             // 
             ClientSize = new Size(600, 497);
@@ -207,7 +220,9 @@
             Controls.Add(lblUser);
             Controls.Add(lblDiet);
             Controls.Add(btnCalcularIMC);
+            Controls.Add(btnAdmin);
             Name = "FormMain";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Cart - Sistema de Gestión";
             Load += FormMain_Load;
             ((System.ComponentModel.ISupportInitialize)dgvCart).EndInit();
