@@ -25,9 +25,16 @@
         /// <returns></returns>
         public double Calculate(double weight, double height, int age, string gender, int activity)
         {
-            double bmr = gender == "M"
-                ? (10 * weight) + (6.25 * height * 100) - (5 * age) + 5
-                : (10 * weight) + (6.25 * height * 100) - (5 * age) - 161;
+            double bmr;
+
+            if (gender == "M")
+            {
+                bmr = (10 * weight) + (6.25 * height * 100) - (5 * age) + 5;
+            }
+            else
+            {
+                bmr = (10 * weight) + (6.25 * height * 100) - (5 * age) - 161;
+            }
 
             double[] factors = { 1.2, 1.375, 1.55, 1.725 };
 
