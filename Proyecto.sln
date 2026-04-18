@@ -9,6 +9,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassController", "src\Clas
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassModels", "src\ClassModels\ClassModels.csproj", "{7FC70F72-704C-4265-BC6F-EBD617DF1B10}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassControllerTest", "test\ClassControllerTest\ClassControllerTest.csproj", "{16559317-8E1E-479A-8475-C0E5E5A5D3AD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BA0B43F4-A77C-4CF6-AF53-7B7522516802} = {BA0B43F4-A77C-4CF6-AF53-7B7522516802}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,9 +34,16 @@ Global
 		{7FC70F72-704C-4265-BC6F-EBD617DF1B10}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FC70F72-704C-4265-BC6F-EBD617DF1B10}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FC70F72-704C-4265-BC6F-EBD617DF1B10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16559317-8E1E-479A-8475-C0E5E5A5D3AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16559317-8E1E-479A-8475-C0E5E5A5D3AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16559317-8E1E-479A-8475-C0E5E5A5D3AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16559317-8E1E-479A-8475-C0E5E5A5D3AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{16559317-8E1E-479A-8475-C0E5E5A5D3AD} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2C2A69BE-81C8-4D85-8FC2-F8B7E4E5D9F0}

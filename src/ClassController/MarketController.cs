@@ -80,6 +80,10 @@ namespace ClassController
             _loader = new DataLoaderCsv();
         }
 
+        public MarketController(IDataLoader @object)
+        {
+        }
+
         /// <summary>
         /// Loads the CSV files.
         /// </summary>
