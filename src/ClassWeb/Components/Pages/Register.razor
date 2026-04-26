@@ -1,0 +1,93 @@
+﻿@page "/register"
+@rendermode InteractiveServer
+@inject NavigationManager Navigation
+
+<h3>Registro de Usuario</h3>
+
+<div>
+    <div>
+        <label>Nombre:</label>
+        <input @bind="nombre" />
+    </div>
+    <div>
+        <label>Apellido:</label>
+        <input @bind="apellido" />
+    </div>
+    <div>
+        <label>Usuario:</label>
+        <input @bind="usuario" />
+    </div>
+    <div>
+        <label>Contraseña:</label>
+        <input @bind="contrasena" type="password" />
+    </div>
+    <div>
+        <button @onclick="Registrar">Registrar</button>
+        <button @onclick="IrALogin">Volver al Login</button>
+    </div>
+</div>
+
+@if (!string.IsNullOrEmpty(mensaje))
+{
+    <div style="color: @(esError ? "red" : "green")">
+        @mensaje
+    </div>
+}
+
+@code {
+    private string nombre = "";
+    private string apellido = "";
+    private string usuario = "";
+    private string contrasena = "";
+    private string mensaje = "";
+    private bool esError = false;
+
+    private void Registrar()
+    {
+        if (string.IsNullOrWhiteSpace(nombre) || string.IsNullOrWhiteSpace(apellido) ||
+            string.IsNullOrWhiteSpace(usuario) || string.IsNullOrWhiteSpace(contrasena))
+        {
+            mensaje = "Todos los campos son requeridos";
+            esError = true;
+            return;
+        }
+
+        string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "users.csv");
+
+        if (File.Exists(path))
+        {
+            string[] usuarios = File.ReadAllLines(path);
+            foreach (string u in usuarios)
+            {
+                string[] partes = u.Split(',');
+                if (partes.Length >= 3 && partes[2] == usuario)
+                {
+                    mensaje = "El usuario ya existe";
+                    esError = true;
+                    return;
+                }
+            }
+        }
+
+        string nuevaLinea = $"{nombre},{apellido},{usuario},{contrasena},[]";
+        File.AppendAllText(path, nuevaLinea + Environment.NewLine);
+
+        mensaje = "Usuario registrado exitosamente";
+        esError = false;
+
+        nombre = "";
+        apellido = "";
+        usuario = "";
+        contrasena = "";
+
+        _ = Task.Delay(2000).ContinueWith(_ =>
+        {
+            Navigation.NavigateTo("/");
+        });
+    }
+
+    private void IrALogin()
+    {
+        Navigation.NavigateTo("/");
+    }
+}

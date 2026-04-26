@@ -1,0 +1,57 @@
+﻿@page "/imc"
+@rendermode InteractiveServer
+@using ClassController
+
+<h3>Calculadora IMC</h3>
+
+<div>
+    <div>
+        <label>Peso (kg):</label>
+        <input type="number" @bind="peso" step="0.1" />
+    </div>
+    <div>
+        <label>Altura (m):</label>
+        <input type="number" @bind="altura" step="0.01" />
+    </div>
+    <div>
+        <button @onclick="CalcularIMC">Calcular</button>
+    </div>
+</div>
+
+@if (resultado != "")
+{
+    <div>
+        <h4>Resultado:</h4>
+        <p>@resultado</p>
+    </div>
+}
+
+@code {
+    private double peso = 70;
+    private double altura = 1.70;
+    private string resultado = "";
+
+    private void CalcularIMC()
+    {
+        if (peso > 0 && altura > 0)
+        {
+            double imc = peso / (altura * altura);
+            string clasificacion = "";
+
+            if (imc < 18.5)
+                clasificacion = "Bajo peso";
+            else if (imc < 25)
+                clasificacion = "Normal";
+            else if (imc < 30)
+                clasificacion = "Sobrepeso";
+            else
+                clasificacion = "Obesidad";
+
+            resultado = $"IMC: {imc:F2} - {clasificacion}";
+        }
+        else
+        {
+            resultado = "Ingrese valores válidos";
+        }
+    }
+}

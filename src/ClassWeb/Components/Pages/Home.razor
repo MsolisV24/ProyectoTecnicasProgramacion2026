@@ -1,0 +1,63 @@
+﻿@page "/"
+@rendermode InteractiveServer
+@inject NavigationManager Navigation
+
+<h3>Login</h3>
+
+<div>
+    <div>
+        <label>Usuario:</label>
+        <input @bind="usuario" />
+    </div>
+    <div>
+        <label>Contraseña:</label>
+        <input @bind="contrasena" type="password" />
+    </div>
+    <div>
+        <button @onclick="IniciarSesion">Iniciar Sesión</button>
+        <button @onclick="IrARegistro">Registrarse</button>
+    </div>
+</div>
+
+@if (!string.IsNullOrEmpty(mensaje))
+{
+    <div style="color:red">@mensaje</div>
+}
+
+@code {
+    private string usuario = "";
+    private string contrasena = "";
+    private string mensaje = "";
+
+    private void IniciarSesion()
+    {
+        if (usuario == "admin" && contrasena == "admin")
+        {
+            Navigation.NavigateTo("/main");
+            return;
+        }
+
+        string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "users.csv");
+
+        if (File.Exists(path))
+        {
+            string[] usuarios = File.ReadAllLines(path);
+            foreach (string u in usuarios)
+            {
+                string[] partes = u.Split(',');
+                if (partes.Length >= 4 && partes[2] == usuario && partes[3] == contrasena)
+                {
+                    Navigation.NavigateTo("/main");
+                    return;
+                }
+            }
+        }
+
+        mensaje = "Usuario o contraseña incorrectos";
+    }
+
+    private void IrARegistro()
+    {
+        Navigation.NavigateTo("/register");
+    }
+}

@@ -1,0 +1,22 @@
+﻿@page "/main"
+@rendermode InteractiveServer
+@inject NavigationManager Navigation
+
+<h3>Bienvenido!</h3>
+
+<div>
+    <button @onclick="IrACalculadora">Calculadora IMC</button>
+    <button @onclick="CerrarSesion">Cerrar Sesión</button>
+</div>
+
+@code {
+    private void IrACalculadora()
+    {
+        Navigation.NavigateTo("/imc");
+    }
+
+    private void CerrarSesion()
+    {
+        Navigation.NavigateTo("/");
+    }
+}
