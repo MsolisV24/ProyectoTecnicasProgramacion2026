@@ -267,7 +267,7 @@
             lblPrice.Name = "lblPrice";
             lblPrice.Size = new Size(36, 15);
             lblPrice.TabIndex = 1;
-            lblPrice.Text = "Price:";
+            lblPrice.Text = "Kcal:";
             // 
             // lblProductName
             // 
